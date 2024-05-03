@@ -22,7 +22,8 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/images"
             ],
             "styles": [
               "src/styles.css"
@@ -41,6 +42,11 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
+                },
+                {
+                  "type": "all",
+                  "maximumWarning": "10mb",
+                  "maximumError": "20mb"
                 }
               ],
               "outputHashing": "all"
@@ -48,7 +54,21 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
+            },
+            "preprod": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.preprod.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -61,6 +81,9 @@
             },
             "development": {
               "buildTarget": "angular-advanced-training:build:development"
+            },
+            "preprod": {
+              "buildTarget": "angular-advanced-training:build:preprod"
             }
           },
           "defaultConfiguration": "development"
@@ -91,5 +114,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "54f10f0f-5f3f-4016-90c8-0d9dace39d44"
   }
 }
